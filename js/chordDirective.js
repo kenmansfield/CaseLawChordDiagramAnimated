@@ -61,10 +61,10 @@ function ($window, matrixFactory) {
 
     var messages = svg.append("text")
       .attr("class", "messages")
-      .attr("transform", "translate(80,"+size[1]/1.1+")")
+      .attr("transform", "translate(0,"+size[1]/1.1+")")
 	  .style("fill","#5C7785")
 	  .style("font-size","30px")
-      .text("Please select a case...");
+      .text("Please select a case and hit search...");
 
     $scope.drawChords = function (data) {
 
