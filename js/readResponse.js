@@ -285,7 +285,7 @@ function LoadD3Data()
 						var obj = {};
 						obj.importer1 = namesArray[i];
 						obj.importer2 = tempString;
-						obj.flow1 = 2;
+						obj.flow1 = 3;
 						obj.flow2 = 1;
 						obj.year = theCase.case_year;
 						obj.cited_by = theCase.cited_by;
@@ -297,7 +297,7 @@ function LoadD3Data()
 		}
 	}
 	
-	parentHtml.defaultView.updateTimeSlider(getPrimaryCasesArray().length - 1);
+	parentHtml.defaultView.updateTimeSlider(getPrimaryCasesArray().length);
 	statusFinishedLoading(citedByArray);
 }
 
@@ -336,4 +336,55 @@ function getSelectedCase(index)
 		return theArray[index].importer1;
 	}
 	return 0;
+}
+
+var isPlaying = false;
+function playTimeLine()
+{
+	if(isPlaying == false)
+	{
+		progressTimeLine(true);
+	}
+	else
+	{
+		parentHtml.getElementById('iframe2').contentWindow.document.getElementById('playButton').innerHTML = 'Play Timeline';
+		isPlaying = false;
+	}
+}
+
+function progressTimeLine(start)
+{
+	var stepObj = {};
+	if(isPlaying == false && start == true)
+	{
+		//Start playing!
+		parentHtml.getElementById('iframe2').contentWindow.document.getElementById('playButton').innerHTML = 'Stop Timeline';
+		stepObj = parentHtml.defaultView.moveTimeSlider(0);
+		isPlaying = true;
+	}
+	else if(isPlaying == false && start == false)
+	{
+		//not currently playing and not starting a new time line, so don't start playing.
+		return;
+	}
+	else
+	{
+		stepObj = parentHtml.defaultView.moveTimeSlider(+1);
+	}
+	
+	if(stepObj.steps == stepObj.currentStep)
+	{
+		//Stop Playing.
+		isPlaying = false;
+		parentHtml.getElementById('iframe2').contentWindow.document.getElementById('playButton').innerHTML = 'Play Timeline';
+	}
+	else
+	{
+		setTimeout(progressTimeLine, 4000, false);
+	}
+}
+
+function stopTimeLine()
+{
+	isPlaying = false;
 }
