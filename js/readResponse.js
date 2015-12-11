@@ -152,6 +152,7 @@ function parseFunction(response)
 		caseObj.case_num = ref.target_case.case_num;
 		caseObj.case_year = ref.target_case.year;
 		caseObj.cited_by = false;
+		caseObj.soc = ref.target_case.soc;
 		if(caseObj.case_num && caseObj.case_year)
 		{
 			newCaseArray.push(caseObj);
@@ -167,6 +168,7 @@ function parseFunction(response)
 		caseObj.case_num = ref.source_case.case_num;
 		caseObj.cited_by = true;
 		caseObj.case_year = ref.source_case.year;
+		caseObj.soc = ref.source_case.soc;
 		if(caseObj.case_num && caseObj.case_year)
 		{
 			newCaseArray.push(caseObj);

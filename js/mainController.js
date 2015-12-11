@@ -8,7 +8,7 @@ function ($scope) {
   
   //Need to get the years based on the range of years of the cases.
   $scope.selected_year = 2013;
-  $scope.years = d3.range(2014, 1950, -1);
+  $scope.years = d3.range(5, 1, -1);
 
   $scope.filters = {};
   $scope.hasFilters = false;

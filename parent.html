@@ -120,7 +120,7 @@ function onSubmit()
 </div>
 
 <iframe id="iframe1" style="margin-left:600px;" src="iframe1.html"></iframe>
-<iframe id="iframe2" style="margin-left:0px;" src="iframe2.html"></iframe>
+<iframe id="iframe2" style="margin-left:0px;width:600px" src="iframe2.html"></iframe>
 
 
 
@@ -138,7 +138,7 @@ function onSubmit()
 function trans(){
 	var a=document.getElementById('iframe1').style.marginLeft;
 	document.getElementById('iframe1').style.marginLeft=document.getElementById('iframe2').style.marginLeft;
-	//document.getElementById('iframe2').style.marginLeft=a;
+	document.getElementById('iframe2').style.marginLeft=a;
 	//document.getElementById('reload').style.opacity=0;
 	//setTimeout(function(){document.getElementById('reload').style.opacity=1;},500);
 	document.getElementById('title').style.opacity=0;
